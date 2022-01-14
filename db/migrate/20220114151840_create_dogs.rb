@@ -6,7 +6,7 @@ class CreateDogs < ActiveRecord::Migration[7.0]
       t.string :weight, null: false
       t.text :description, null: false
       t.references :breed, null: false, foreign_key: true
-      t.references :owner, references: :users. foreign_key: { to_table: :users }, null: false
+      t.references :owner, references: :users, foreign_key: { to_table: :users }, null: false
       t.timestamps
     end
   end
