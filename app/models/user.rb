@@ -8,5 +8,5 @@ class User < ApplicationRecord
 
   has_many :dogs, dependent: :destroy
   has_many :user_accounts, dependent: :destroy
-  validates :email, presence: true
+  validates_presence_of :username, :email
 end
