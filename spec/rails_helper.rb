@@ -6,7 +6,12 @@ require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
-
+require 'devise'
+require 'devise/jwt/test_helpers'
+require_relative 'support/factory_bot'
+require_relative 'support/database_cleaner'
+require_relative 'support/should_matchers'
+require_relative 'support/storage_cleaner'
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
