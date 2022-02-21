@@ -44,6 +44,7 @@ gem 'bootsnap', require: false
 gem 'rack-cors'
 
 gem 'rspec-rails', '~> 5.0.0'
+gem 'rswag', git: 'https://github.com/rswag/rswag.git', branch: 'master'
 
 # Use RSwag for API documentation
 # gem 'rswag'
