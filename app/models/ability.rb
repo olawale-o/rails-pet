@@ -5,6 +5,6 @@ class Ability
     return unless user.present?
 
     can :read, :Dog
-    can :manage, :Dog, user: user
+    can :manage, Dog, user:
   end
 end
