@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self
 
-  has_many :dogs, dependent: :destroy
+  has_many :dogs, class_name: 'Dog', foreign_key: :owner_id, dependent: :destroy
   has_many :user_accounts, dependent: :destroy
   validates_presence_of :username, :email
 end
