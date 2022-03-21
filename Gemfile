@@ -6,6 +6,8 @@ ruby '3.1.0'
 gem 'cancancan'
 gem 'devise'
 gem 'devise-jwt'
+gem 'nokogiri'
+gem 'open-uri'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 7.0.1'

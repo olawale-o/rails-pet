@@ -110,6 +110,7 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
+    date (3.2.2)
     debug (1.4.0)
       irb (>= 1.3.6)
       reline (>= 0.2.7)
@@ -191,6 +192,10 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.0-x86_64-darwin)
       racc (~> 1.4)
+    open-uri (0.2.0)
+      stringio
+      time
+      uri
     orm_adapter (0.5.0)
     parallel (1.21.0)
     parser (3.1.0.0)
@@ -274,13 +279,17 @@ GEM
       ffi (~> 1.12)
     shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
+    stringio (3.0.1)
     strscan (3.0.1)
     thor (1.2.1)
+    time (0.2.0)
+      date
     timeout (0.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.1.0)
     uniform_notifier (1.14.2)
+    uri (0.11.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     warden-jwt_auth (0.6.0)
@@ -309,6 +318,8 @@ DEPENDENCIES
   faker!
   image_processing (~> 1.2)
   jbuilder
+  nokogiri
+  open-uri
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
