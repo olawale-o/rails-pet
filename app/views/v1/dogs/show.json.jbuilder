@@ -3,8 +3,7 @@ json.data do
   json.dog do
     json.(@dog, :owner_id, :breed_id, :color, :name, :gender)
     json.images @dog.images do |image|
-      json.filename image.filename
-      json.url url_for(image)
+      json.partial! 'shared/image', obj: image
     end
   end
 end
