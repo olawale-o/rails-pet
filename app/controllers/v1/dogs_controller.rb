@@ -4,9 +4,7 @@ class V1::DogsController < ApplicationController
 
   # GET /dogs
   def index
-    @dogs = dog.all
-
-    render json: @dogs
+    @dogs = Dog.all
   end
 
   # GET /dogs/1
