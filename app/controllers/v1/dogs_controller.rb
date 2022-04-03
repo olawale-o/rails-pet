@@ -1,10 +1,14 @@
 class V1::DogsController < ApplicationController
-  load_and_authorize_resource param_method: :dog_params
+  load_and_authorize_resource param_method: :dog_params, except: %i[dogs]
   before_action :set_dog, only: %i[show update destroy]
+
+  def dogs
+    @dogs = Dog.all
+  end
 
   # GET /dogs
   def index
-    @dogs = Dog.all
+    @my_dogs = User.find(current_user.id).dogs
   end
 
   # GET /dogs/1
