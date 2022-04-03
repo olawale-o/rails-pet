@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   namespace :v1, defaults: { format: :json } do
+    get '/dogs', to: 'dogs#dogs'
     resources :users do
       resources :dogs
     end
