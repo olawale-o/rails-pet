@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   end
 
   namespace :v1, defaults: { format: :json } do
-    resources :dogs
+    resources :users do
+      resources :dogs
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
