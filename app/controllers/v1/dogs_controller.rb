@@ -12,9 +12,7 @@ class V1::DogsController < ApplicationController
   end
 
   # GET /dogs/1
-  def show
-    render json: @dog
-  end
+  def show; end
 
   # POST /dogs
   def create
@@ -45,7 +43,7 @@ class V1::DogsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_dog
-    @dog = dog.find(params[:id])
+    @dog = Dog.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
