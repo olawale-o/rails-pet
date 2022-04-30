@@ -28,7 +28,7 @@ class V1::DogsController < ApplicationController
   # PATCH/PUT /dogs/1
   def update
     if @dog.update(dog_params)
-      render json: @dog
+      render :show, status: :created
     else
       render json: @dog.errors, status: :unprocessable_entity
     end
