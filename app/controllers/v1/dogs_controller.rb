@@ -8,7 +8,11 @@ class V1::DogsController < ApplicationController
 
   # GET /dogs
   def index
-    @my_dogs = User.find(current_user.id).dogs
+    if params[:breed_id]
+      @breed_dogs = Breed.find(params[:breed_id]).dogs
+    else
+      @my_dogs = User.find(current_user.id).dogs
+    end
   end
 
   # GET /dogs/1
