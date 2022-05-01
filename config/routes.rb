@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   namespace :v1, defaults: { format: :json } do
     get '/dogs', to: 'dogs#dogs'
-    resources :breeds, only: [:index]
+    resources :breeds, only: [:index] do
+      resources :dogs, only: [:index]
+    end
     resources :users do
       resources :dogs
     end
