@@ -6,6 +6,12 @@ class V1::DogsController < ApplicationController
     @dogs = Dog.all
   end
 
+  def photos
+    dog = Dog.find(params[:id])
+    @dog_photos = dog.images
+    render :photos, status: :ok
+  end
+
   # GET /dogs
   def index
     if params[:breed_id]
