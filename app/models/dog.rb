@@ -3,6 +3,20 @@ class Dog < ApplicationRecord
   belongs_to :breed, counter_cache: true
   has_many_attached :images, dependent: :destroy
 
-  validates_presence_of :name, :color, :weight, :description, :breed_id, :owner_id, :gender
+  validates :weight, presence: true, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 200 }
+  validates_presence_of :name, :color, :description, :breed_id, :owner_id
+  validates :gender, inclusion: { in: %w[m f] }
   validates :name, uniqueness: { scope: :owner_id }
+
+  before_validation :downcase_attributes
+
+  private
+
+  def downcase_attributes
+    self.name = name.strip.downcase if name.present?
+    self.color = color.strip.downcase if color.present?
+    self.description = description.strip.downcase if description.present?
+    self.gender = gender.strip.downcase if gender.present?
+    self.weight = weight.strip.downcase if weight.present?
+  end
 end
