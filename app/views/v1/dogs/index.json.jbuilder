@@ -4,7 +4,7 @@ json.data do
     json.owner do
       json.(@user, :id, :dogs_count, :username)
       json.dogs @my_dogs do |dog|
-        json.(dog, :id, :breed_id, :color, :name, :gender)
+        json.(dog, :id, :pic_url, :breed_id, :color, :name, :gender)
         json.images dog.images do |image|
           json.partial! 'shared/image', obj: image
         end
@@ -12,7 +12,7 @@ json.data do
     end
   else
     json.dogs @breed_dogs do |dog|
-      json.(dog, :name, :color)
+      json.(dog, :name, :color, :pic_url)
     end
   end
 end
