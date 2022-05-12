@@ -16,6 +16,10 @@ class Dog < ApplicationRecord
 
   before_validation :downcase_attributes
 
+  def breed_name
+    breed.name
+  end
+
   private
 
   def downcase_attributes
