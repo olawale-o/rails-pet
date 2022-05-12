@@ -15,6 +15,7 @@ class Dog < ApplicationRecord
                                  message: ->(_, data) { format('%s has already be taken by you', data[:value]) } }
 
   before_validation :downcase_attributes
+  before_save :set_pet_profile_pic
 
   def breed_name
     breed.name
@@ -28,5 +29,13 @@ class Dog < ApplicationRecord
     self.description = description.strip.downcase if description.present?
     self.gender = gender.strip.downcase if gender.present?
     self.weight = weight.strip.downcase if weight.present?
+  end
+
+  def link_blob(blob)
+    Rails.application.routes.url_helpers.rails_blob_path(blob, only_path: true)
+  end
+
+  def set_pet_profile_pic
+    self.pic_url = link_blob(images.first.blob) if images.present?
   end
 end
