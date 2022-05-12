@@ -1,6 +1,6 @@
 class V1::DogsController < ApplicationController
   load_and_authorize_resource param_method: :dog_params, except: %i[dogs]
-  before_action :set_dog, only: %i[show update destroy]
+  before_action :set_dog, only: %i[show update destroy set_pet_photo]
   before_action :set_breed, unless: -> { params[:user_id] }, only: %i[index]
   before_action :set_user, unless: -> { params[:breed_id] }, only: %i[index]
 
@@ -46,6 +46,13 @@ class V1::DogsController < ApplicationController
     end
   end
 
+  # POST /dogs/1
+  def set_pet_photo
+    @dog.pic_url = photo_params
+    @dog.save
+    render :photos, status: :ok
+  end
+
   # DELETE /dogs/1
   def destroy
     @dog.destroy
@@ -69,5 +76,9 @@ class V1::DogsController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def dog_params
     params.require(:dog).permit(:name, :weight, :color, :gender, :breed_id, :description, images: [])
+  end
+
+  def photo_params
+    params.require(:photo).permit(:url)
   end
 end
