@@ -1,6 +1,8 @@
 class V1::DogsController < ApplicationController
   load_and_authorize_resource param_method: :dog_params, except: %i[dogs]
   before_action :set_dog, only: %i[show update destroy]
+  before_action :set_breed, unless: -> { params[:user_id] }, only: %i[index]
+  before_action :set_user, unless: -> { params[:breed_id] }, only: %i[index]
 
   def dogs
     @dogs = Dog.all
@@ -15,9 +17,9 @@ class V1::DogsController < ApplicationController
   # GET /dogs
   def index
     if params[:breed_id]
-      @breed_dogs = Breed.find(params[:breed_id]).dogs
+      @breed_dogs = @breed.dogs
     else
-      @my_dogs = User.find(current_user.id).dogs
+      @my_dogs = User.find(params[:user_id]).dogs
     end
   end
 
@@ -54,6 +56,14 @@ class V1::DogsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_dog
     @dog = Dog.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
+  def set_breed
+    @breed = Breed.find(params[:breed_id])
   end
 
   # Only allow a trusted parameter "white list" through.
