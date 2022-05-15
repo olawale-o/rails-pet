@@ -24,9 +24,6 @@ gem 'jbuilder'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
 
-# Use Rubocop for code quality
-gem 'rubocop', '>= 1.0', '< 2.0'
-
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem 'kredis'
 
@@ -46,7 +43,7 @@ gem 'image_processing', '~> 1.2'
 gem 'rack-cors'
 
 gem 'rspec-rails', '~> 5.0.0'
-gem 'rswag', git: 'https://github.com/rswag/rswag.git', branch: 'master'
+gem 'rswag'
 
 # Use RSwag for API documentation
 # gem 'rswag'
