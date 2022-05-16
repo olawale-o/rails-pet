@@ -21,6 +21,10 @@ class Dog < ApplicationRecord
     breed.name
   end
 
+  def owner
+    user.username
+  end
+
   private
 
   def downcase_attributes
