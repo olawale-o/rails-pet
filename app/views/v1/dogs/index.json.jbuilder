@@ -5,6 +5,8 @@ json.data do
       json.(@user, :id, :dogs_count, :username)
       json.dogs @my_dogs do |dog|
         json.(dog, :id, :pic_url, :breed_id, :color, :name, :gender)
+        json.liked_by_me dog.liked_by?(current_user) if current_user
+        json.likes dog.likes.size
         json.images dog.images do |image|
           json.partial! 'shared/image', obj: image
         end
