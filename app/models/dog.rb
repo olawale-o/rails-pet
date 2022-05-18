@@ -2,6 +2,7 @@ class Dog < ApplicationRecord
   belongs_to :user, foreign_key: :owner_id, class_name: 'User', counter_cache: true
   belongs_to :breed, counter_cache: true
   has_many_attached :images, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   validates :weight, presence: true,
                      numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 200,
