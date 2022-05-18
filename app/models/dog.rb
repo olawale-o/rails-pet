@@ -26,6 +26,10 @@ class Dog < ApplicationRecord
     user.username
   end
 
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
+
   private
 
   def downcase_attributes
