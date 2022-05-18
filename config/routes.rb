@@ -14,7 +14,9 @@ Rails.application.routes.draw do
       resources :dogs, only: [:index]
     end
     resources :users do
-      resources :dogs
+      resources :dogs do
+        resources :likes
+      end
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
