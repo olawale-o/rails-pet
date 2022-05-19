@@ -48,7 +48,7 @@ class V1::DogsController < ApplicationController
 
   # POST /dogs/1
   def set_pet_photo
-    @dog.pic_url = photo_params
+    @dog.pic_url = photo_params[:url]
     @dog.save
     render :photos, status: :ok
   end

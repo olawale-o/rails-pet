@@ -7,6 +7,8 @@ json.data do
   end
 
   if @dog
-    json.(@dog, :id, :owner_id, :breed_id, :color, :name, :gender, :pic_url)
+    json. dog do
+      (@dog, :id, :breed_id, :color, :name, :gender, :pic_url)
+    end
   end
 end
