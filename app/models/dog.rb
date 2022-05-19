@@ -16,7 +16,7 @@ class Dog < ApplicationRecord
                                  message: ->(_, data) { format('%s has already be taken by you', data[:value]) } }
 
   before_validation :downcase_attributes
-  before_save :set_pet_profile_pic
+  before_create :set_pet_profile_pic
 
   def breed_name
     breed.name
