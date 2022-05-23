@@ -13,22 +13,6 @@ class V1::DogsController < ApplicationController
     prev_direction unless @direction == 'next'
   end
 
-  def next_direction
-    query_condition = @page ? ['id <= ?', @page] : nil
-    all_dogs = Dog.where(query_condition).where(gender: @gender).order(id: :desc).limit(ITEMS_PER_PAGE)
-    @dogs = all_dogs[START_INDEX..END_INDEX]
-    @next_page_no = all_dogs[5].id if all_dogs[5]
-    @prev_page_no = @dogs.first.id if @page
-  end
-
-  def prev_direction
-    query_condition = @page ? ['id > ?', @page] : nil
-    all_dogs = Dog.where(query_condition).where(gender: @gender).order(id: :asc).limit(ITEMS_PER_PAGE)
-    @dogs = all_dogs[START_INDEX..END_INDEX].reverse
-    @next_page_no = @page
-    @prev_page_no = all_dogs[4].id if all_dogs[5]
-  end
-
   def photos
     dog = Dog.find(params[:id])
     @dog_photos = dog.images
@@ -80,6 +64,22 @@ class V1::DogsController < ApplicationController
   end
 
   private
+
+  def next_direction
+    query_condition = @page ? ['id <= ?', @page] : nil
+    all_dogs = Dog.where(query_condition).where(gender: @gender).order(id: :desc).limit(ITEMS_PER_PAGE)
+    @dogs = all_dogs[START_INDEX..END_INDEX]
+    @next_page_no = all_dogs[5].id if all_dogs[5]
+    @prev_page_no = @dogs.first.id if @page
+  end
+
+  def prev_direction
+    query_condition = @page ? ['id > ?', @page] : nil
+    all_dogs = Dog.where(query_condition).where(gender: @gender).order(id: :asc).limit(ITEMS_PER_PAGE)
+    @dogs = all_dogs[START_INDEX..END_INDEX].reverse
+    @next_page_no = @page
+    @prev_page_no = all_dogs[4].id if all_dogs[5]
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_dog
