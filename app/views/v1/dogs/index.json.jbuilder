@@ -1,5 +1,5 @@
 json.data do
-  json.message :successful
+  json.partial! 'shared/response_header', status: :successful
   if @my_dogs
     json.owner do
       json.(@user, :id, :dogs_count, :username)

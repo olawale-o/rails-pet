@@ -1,5 +1,5 @@
 json.data do
-  json.message :successful
+  json.partial! 'shared/response_header', status: :successful
   json.dog do
     json.(@dog, :id, :owner_id, :pic_url, :color, :name, :gender, :description, :weight)
     json.breed(@dog.breed.name)

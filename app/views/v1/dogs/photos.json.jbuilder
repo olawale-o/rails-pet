@@ -1,5 +1,5 @@
 json.data do
-  json.message :successful
+  json.partial! 'shared/response_header', status: :successful
   if @dog_photos
     json.photos @dog_photos do |image|
       json.partial! 'shared/image', obj: image
