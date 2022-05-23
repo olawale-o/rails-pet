@@ -19,6 +19,16 @@ Devise.setup do |config|
     jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
     # jwt.expiration_time = 20.seconds.to_i
   end
+
+  # ==> Google Authentication
+  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], { 
+    scope: 'userinfo.email, userinfo.profile',
+    prompt: 'select_account',
+    image_aspect_ratio: 'square',
+    image_size: 50,
+    skip_jwt: true
+  }
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
