@@ -4,16 +4,25 @@ git_source(:github) { |repo| "ttps://github.com/#{repo}.git" }
 ruby '3.1.0'
 
 gem 'cancancan'
+
+gem 'cloudinary'
+
 gem 'devise'
+
 gem 'devise-jwt'
-gem 'nokogiri'
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
-gem 'open-uri'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 7.0.1'
+
+gem 'nokogiri'
+
+gem 'omniauth'
+
+gem 'omniauth-facebook'
+
+gem 'omniauth-google-oauth2'
+
+gem 'open-uri'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
