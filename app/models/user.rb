@@ -13,7 +13,6 @@ class User < ApplicationRecord
 
   validates :username, presence: { message: 'Username cannot be blank' }
   validates_uniqueness_of :username, { message: 'Username has already been taken' }
-  validates_presence_of :email, uniqueness: true
 
   before_validation :downcase_attributes
 
