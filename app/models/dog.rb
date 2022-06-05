@@ -6,11 +6,11 @@ class Dog < ApplicationRecord
 
   validates :weight, presence: true,
                      numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 200,
-                                     message: ->(_, data) { format('%s must be between 20 and 200', data[:value]) } }
-  validates_presence_of :breed_id, :owner_id
-  validates_presence_of :name, { message: 'Name cannot be blank' }
-  validates_presence_of :color, { message: 'Color cannot be blank' }
-  validates_presence_of :description, { message: 'Color cannot be blank' }
+                                     message: ->(_, data) { format('Dog Weight must be between 20 and 200 not %s', data[:value]) } }
+  validates_presence_of :breed_id, { message: 'Dog breed is required' }
+  validates_presence_of :name, { message: 'Dog name cannot be blank' }
+  validates_presence_of :color, { message: 'Dog color cannot be blank' }
+  validates_presence_of :description, { message: 'Description cannot be blank' }
   validates :gender, inclusion: { in: %w[m f], message: 'Gender can either be m or f' }
   validates :name, uniqueness: { scope: :owner_id,
                                  message: ->(_, data) { format('%s has already be taken by you', data[:value]) } }
